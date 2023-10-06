@@ -1,0 +1,21 @@
+BoxLayout:
+    orientation: 'vertical'
+
+    Label:
+        text: 'Canteen Menu'
+
+    BoxLayout:
+        orientation: 'vertical'
+
+        ListView:
+            id: item_list
+            adapter:
+                ListAdapter(
+                    data=["Chicken noodles", "Manchuria", "Veg Noodles"], 
+                    selection_mode='single',
+                    allow_empty_selection=False,
+                    cls=ListItemButton)
+
+    Button:
+        text: 'Order'
+        on_release: app.order_item(item_list.adapter.selection[0].text)
